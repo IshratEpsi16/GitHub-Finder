@@ -1,10 +1,12 @@
 class UI {
     constructor() {
         this.profile = document.querySelector('#profile')
+        this.repository = document.querySelector('#repository')
     }
 
     show_user_profile(user) {
         this.clearAlert()
+
         this.profile.innerHTML = `
         <div class='container'>
             <nav class="navbar navbar-dark bg-success mt-2">
@@ -26,6 +28,9 @@ class UI {
             Followers : ${user.followers}
    
         </button>
+       
+
+
         <button class="bg-success text-white p-1" target='_blank'>
             Following : ${user.following}
         </button>
@@ -54,9 +59,32 @@ class UI {
         `                               //since we didn't write any code in html's profile div.we will write all the codes here
 
     }
+    //new added
+    show_user_repo(user) {
+        let repo = user.public_repos
+        let user_input = search_user_box.value
+
+
+        var show_repo = '';
+        for (var i = 1; i <= repo; i++) {
+            show_repo += `<a href="https://api.github.com/users/${user_input}/repos" target='_blank'> 
+            <ul>
+                <li>${i}</li>
+                <li>Repo name : ${user.name}</li>
+                <li><a href="${user.html_url}">Link</a></li>
+            </ul>
+            
+            </a>`;
+        }
+        document.getElementById('repository').insertAdjacentHTML('afterbegin', show_repo);
+    }
+
     clear_profile() {
         this.profile.innerHTML = ''
+
     }
+
+
     showAlert(message, className) {
         this.clearAlert()
         this.clear_profile()

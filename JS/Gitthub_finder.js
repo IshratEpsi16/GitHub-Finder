@@ -23,6 +23,7 @@ function callApi(e) {
                 else {
                     //show user profile
                     ui_object.show_user_profile(data) //here all the info will pass from show_user_profile function
+                    ui_object.show_user_repo(data)
                 }
 
             })
