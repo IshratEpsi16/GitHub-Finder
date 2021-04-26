@@ -59,7 +59,7 @@ class UI {
         `                               //since we didn't write any code in html's profile div.we will write all the codes here
 
     }
-    //new added
+    //newly added
     show_user_repo(user) {
         let repo = user.public_repos
         let user_input = search_user_box.value
