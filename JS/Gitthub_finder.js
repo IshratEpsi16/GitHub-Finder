@@ -23,7 +23,13 @@ function callApi(e) {
                 else {
                     //show user profile
                     ui_object.show_user_profile(data) //here all the info will pass from show_user_profile function
-                    ui_object.show_user_repo(data)  //for show_user_repo()
+                    fetch(`https://api.github.com/users/${user_input}/repos`)
+                        .then(res => res.json())
+                        .then(data => {
+                            ui_object.show_user_repo(data)  //for show_user_repo()
+
+                        })
+
                 }
 
             })
@@ -37,5 +43,3 @@ function callApi(e) {
 
 
 }
-
-

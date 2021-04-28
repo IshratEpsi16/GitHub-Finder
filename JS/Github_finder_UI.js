@@ -60,21 +60,25 @@ class UI {
 
     }
     //newly added
-    show_user_repo(user) {
-        let repo = user.public_repos
-        let user_input = search_user_box.value
-
-
+    show_user_repo(data) {
+        //console.log(data);
         var show_repo = '';
-        for (var i = 1; i <= repo; i++) {
-            show_repo += `<a href="https://api.github.com/users/${user_input}/repos" target='_blank'> 
-            <ul>
-                <li>${i}</li>
-                <li>Repo name : ${user.name}</li>
-                <li><a href="${user.html_url}">Link</a></li>
-            </ul>
-            
-            </a>`;
+
+        for (var i = 0; i < data.length; i++) {
+            show_repo += `
+            <div class='container'>
+                <div class="card card-body mb-3">
+                    <div class='row'>
+                        <div class='col-md-3'>
+                            <h3 class='text-success'>Repository : ${i + 1}</h3> 
+                            <h6 class='text-secondary'>Repository name : ${data[i].name}</h6>
+                            <h6 class='text-secondary'>Repository Link : <a href="${data[i].html_url}" target='_blank'>Click Here</a></h6>
+         
+                         </div>
+                    </div>
+                </div>
+            </div>
+            `;
         }
         document.getElementById('repository').insertAdjacentHTML('afterbegin', show_repo);
     }
